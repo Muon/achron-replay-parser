@@ -86,7 +86,7 @@ class Player(object):
         self._last_timestamp = timestamp
 
     def __str__(self):
-        return "Player %d (%s)" % (self.seat, self.name)
+        return "%s (player %d)" % (self.name, self.seat)
 
 
 class BaseReplayMessage(object):
