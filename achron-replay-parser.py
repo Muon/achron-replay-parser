@@ -24,10 +24,12 @@ def _read_string(len_type, data, offset=0):
     data, offset = _read_length_prefixed_field(len_type, data, offset)
     return data.decode('ascii'), offset
 
+GAME_TICKS_PER_SECOND = 18
+
 
 def _format_ticks(ticks):
-    minutes, ticks = divmod(ticks, 18 * 60)
-    seconds, ticks = divmod(ticks, 18)
+    minutes, ticks = divmod(ticks, GAME_TICKS_PER_SECOND * 60)
+    seconds, ticks = divmod(ticks, GAME_TICKS_PER_SECOND)
     return "%dm %ds %dt" % (minutes, seconds, ticks)
 
 MessageType = enum(
